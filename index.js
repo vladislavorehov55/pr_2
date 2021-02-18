@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return {t, seconds, minutes, hours}
     }
     function setClock(id, endtime) {
-        
         let timer = document.getElementById(id);
         let hours = timer.querySelector('.hours');
         let minutes = timer.querySelector('.minutes');
@@ -54,4 +53,18 @@ document.addEventListener('DOMContentLoaded', function() {
         const timerId = setInterval(updateClock, 1000);
     };
     setClock('timer', deadline);
+
+    let more = document.querySelector('.more');
+    let overlay = document.querySelector('.overlay');
+    let close = document.querySelector('.popup-close');
+    more.addEventListener('click', function() {
+        overlay.style.display = 'block';
+        this.classList.add('more-splash');
+        document.body.style.overflow = 'hidden'
+    });
+    close.addEventListener('click', function() {
+        overlay.style.display = 'none';
+        more.classList.remove('more-splash');
+        document.body.style.overflow = '';
+    })
 })
